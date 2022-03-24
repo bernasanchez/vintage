@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#btnCarrito{
+  font-size: 85%;
+}
+
+.imgCarrito{
+  height: 30px;
+  width: 30px;
+  
+}
+
+#imgLogo{
+  margin-right: 4px;
+  border-radius: 10%;
+}
+
+#imgLogo:hover{
+  box-shadow: 1px 3px 3px #f3f3f380;
+}
+
