@@ -21,13 +21,37 @@ code {
   width: 30px;
   
 }
-
+/* Logo Vintage */
 #imgLogo{
   margin-right: 4px;
   border-radius: 10%;
 }
-
 #imgLogo:hover{
   box-shadow: 1px 3px 3px #f3f3f380;
 }
 
+/* Caja que envuelve a Counter */
+#cajaCounter{
+  height: 100px;
+  width: 200px;
+  text-align: center;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+#cajaCantidadCounter{
+  margin-left: 30px; 
+  margin-right: 30px;
+  
+}
+
+/* Botones de Counter */
+#btnSuma{
+  margin-bottom: 3px;
+  margin-left: 2px;
+}
+#btnResta{
+  margin-bottom: 3px;
+  margin-right: 2px;
+}
+
+/* Imagenes Card */

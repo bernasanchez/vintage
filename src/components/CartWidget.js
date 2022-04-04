@@ -7,16 +7,17 @@ import cartwidget from "../assets/cartwidget.png"
 const CartWidget = () => {
     return (
        <>
-        <button class="btn btn-outline-light btn-sm" >
-        <img className="imgCarrito" src={cartwidget}></img>
-        </button>
+            
+        <button class="btn btn-outline-success btn-sm" id="btnCarrito" >
+            { <FontAwesomeIcon icon={faCartShopping}/> }
+            <span>(1)</span>
+        </button>  
+               
        </>
-       
-        //PROFE: Prefiero usar el codigo de abajo para el carrito, pero para cumplir con la consigna
-        //                      puse una imagen adentro de un btn. 
-        // <button class="btn btn-outline-success btn-sm" id="btnCarrito" >
-        //     {/* <FontAwesomeIcon icon={faCartShopping} /> */}
-        // </button>      
+           
+        // <button class="btn btn-outline-light btn-sm" >
+        // <img className="imgCarrito" src={cartwidget}></img>
+        // </button> 
     );
     
 

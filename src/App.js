@@ -1,15 +1,21 @@
 import React from  'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import ItemListContainer from './containers/ItemListContainer';
+import ItemListContainer from './components/ItemListContainer';
+
+
+
 
 function App() {
   return (
     <div>
-
       <NavBar />
-      <ItemListContainer greeting={'Hola Máximo!'}/>
+      
+      <div className="container mt-2">
+      <ItemListContainer greeting={'ItemListContainer'}/>
+      </div>
 
+   
     </div>
   );
 }
