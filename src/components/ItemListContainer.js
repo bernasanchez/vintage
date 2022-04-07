@@ -2,10 +2,11 @@ import { counter } from "@fortawesome/fontawesome-svg-core";
 import React, { useState, useEffect } from "react";
 import ItemCount from "../components/ItemCount";
 import ItemList from "./ItemList";
-import { getProducts } from '../products/Products' //Importamos datos del array en esta F
+import { getProducts } from '../products/Products' //Importamos datos del array Products en esta F
 
 
-const ItemListContainer = ({greeting}) => {
+
+const ItemListContainer = ({ greeting }) => {
     const [ropa, setRopa] = useState([])
 
     useEffect(() => {
@@ -28,7 +29,6 @@ const ItemListContainer = ({greeting}) => {
             <ItemCount stock={5} initial={1} onAdd={onAdd}  />
             
             <ItemList  productos = {ropa} />
-    
        
         </>
     );
