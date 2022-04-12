@@ -6,22 +6,20 @@ const ItemList = ({ productos }) => {
 
     // console.log(productos, 'Productos llegaron a ItemList')
     return (
-     <>
-        
+        <>
         <div className="row">
                 { productos.map( item => 
-                        (<Item  key={item.id} 
+                        (<Item  id={item.id}
+                                key={item.id}  
                                 title={item.title} 
-                                description={item.description} 
+                                // description={item.description} 
                                 price={item.price} 
                                 picture={item.picture} 
                                 stock={item.stock} />
                         )) 
                 }
         </div>
-        
-    
-    </>
+        </>
 
     );
 

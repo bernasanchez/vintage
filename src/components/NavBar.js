@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import CartWidget from './CartWidget';
 import vintagelogo from '../assets/vintagelogo.png'
+import { NavLink, Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
@@ -18,27 +19,27 @@ const NavBar = () => {
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <a className="navbar-brand" href="index.html">
+                <Link to='/' className="navbar-brand">
                     <img    src={vintagelogo} 
                             alt="" width="30" height="30"
                             className="d-inline-block align-text-top"
                             id="imgLogo" />
                     V I N T A G E
-                </a>
+                </Link>
                 
                 <div className="d-flex flex-row">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="#">Home</a>
+                        <NavLink to='/' className="nav-link" aria-current="page">Home</NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Hombre</a>
+                        <NavLink to='/category/hombre' className="nav-link">Hombre</NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Mujer</a>
+                        <NavLink to='/category/mujer' className="nav-link">Mujer</NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Deco</a>
+                        <NavLink to='/category/deco' className="nav-link">Deco</NavLink>
                     </li>
                     <span className="navbar-text">
                     <CartWidget />

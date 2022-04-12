@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 
 const Item = ({ id, title, description, price, picture }) =>{
@@ -7,15 +8,20 @@ const Item = ({ id, title, description, price, picture }) =>{
         <>
             <div className="col-xl-3" >
                 <div key={id} className="card text-center ">
-                <div className="card-body">
+                <div className="card-body ">
                 <img src={picture} className="card-img-top img-thumbnail" id="imgCard"/>
                     <h5 className="card-title">{title}</h5>
                     <p className="card-text">{description}</p>
                     <p className="card-text"> $ {price}</p>
-                    <a href="#" class="btn btn-dark d-grid gap-2">Ver Detalle del Producto</a>
+                    <button className="btn btn-dark d-grid gap-2 mx-auto">
+                        <NavLink 
+                            to={`/item/${id}`} 
+                            style={{textDecoration: 'none', color: 'white'}} >Ver Detalle del Producto
+                        </NavLink>
+                    </button>
                 </div>
                 </div>
-            </div>
+            </div> 
         </>
 
     );
