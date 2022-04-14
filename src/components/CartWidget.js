@@ -8,16 +8,12 @@ const CartWidget = () => {
     return (
        <>
             
-        <button class="btn btn-outline-success btn-sm" id="btnCarrito" >
+        <button className="btn btn-outline-success btn-sm" id="btnCarrito" >
             { <FontAwesomeIcon icon={faCartShopping}/> }
             <span>(1)</span>
         </button>  
                
        </>
-           
-        // <button class="btn btn-outline-light btn-sm" >
-        // <img className="imgCarrito" src={cartwidget}></img>
-        // </button> 
     );
     
 

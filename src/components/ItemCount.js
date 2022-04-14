@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 
 const ItemCount = ({stock, initial, onAdd}) => {
     
@@ -38,17 +40,15 @@ const ItemCount = ({stock, initial, onAdd}) => {
             {
                 counter > 0 ?
                 <button className="btn btn-dark" id="btnAgregar" onClick={() => onAdd(counter)}> 
-                Agregar al Carrito 
+                    { <FontAwesomeIcon icon={faCartPlus} style={{marginRight:'5px'}} />}
+                    Agregar al Carrito 
                 </button>
                 :
                 <button className="btn btn-secondary disabled" id="btnAgregar" onClick={() => onAdd}> 
-                Agregar al Carrito 
+                    { <FontAwesomeIcon icon={faCartPlus} style={{marginRight:'5px'}} />}
+                    Agregar al Carrito 
                 </button>
-
             }
-            
-            <br />
-            <button className="btn btn-success" id="btnFinalizarCompra"> Finalizar Compra </button>
         </>
     );
 }
