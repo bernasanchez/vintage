@@ -38,7 +38,11 @@ const ItemListContainer = ({ }) => {
         <>
             
             {/* <ItemCount stock={5} initial={1} onAdd={onAdd}  /> */}
-            
+            <div className="container mt-2" >
+                <div className='titulosPaginas mb-3'>
+                <h2>Productos Disponibles</h2>
+                </div>
+            </div>
             <ItemList  productos = {ropa} />
        
         </>
