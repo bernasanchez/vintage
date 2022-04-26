@@ -36,14 +36,31 @@ const CartContextProvider = ({ children }) => {
         setItems([]);     
     }
 
-    const totalPrenda = (idItem) => {
-        let index = items.map(item => item.idItem).indexOf(idItem);
+    const totalPrenda = (id) => {
+        let index = items.map(item => item.id).indexOf(id);
         return items[index].price * items[index].counter;
+    }
+
+    const subTotalProductos = () => {
+        let subTotalSeleccionados = items.map(item => totalPrenda(item.id));
+        return subTotalSeleccionados.reduce((previousValue, currentValue) => previousValue + currentValue); 
+    }
+
+    const impuestos = () => {
+        return subTotalProductos() * 0.21;
+    }
+
+    const costoEnvio = () => {
+        return subTotalProductos() *0.01
+    }
+
+    const totalCompra = () => {
+        return (subTotalProductos() + impuestos() + costoEnvio());
     }
 
     return(
 
-        <CartContext.Provider  value={[{ items, addItem, removeItem, clearItems, totalPrenda }]}>
+        <CartContext.Provider  value={[{ items, addItem, removeItem, clearItems, totalPrenda, subTotalProductos, impuestos, costoEnvio, totalCompra  }]}>
             {children}
         </CartContext.Provider>
 
