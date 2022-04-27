@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getProducts } from "../products/Products";
 import ItemDetail from "./ItemDetail";
+import { doc, getDoc } from "firebase/firestore";
+import db from '../utils/firebaseConfig';
+
 
 
 const ItemDetailContainer = () => {
@@ -9,23 +11,28 @@ const ItemDetailContainer = () => {
     const { id } = useParams();
     
     useEffect(() => { 
-        if(id == undefined){
-            async function getItem() { //F para mostrar un solo item dentro del ItemDetailContainer
-                const detalleProducto = await getProducts([]) //Guardamos en detalleProducto 1 solo Producto
-                setItem(detalleProducto); //Modificamos el estado de item (osea del producto que quiero mostrar)
+        
+        
+        const getItemFirestore = async (id) => {
+            const docRef = doc(db, "products", id);
+            const docSnap = await getDoc(docRef);
+            
+            if (docSnap.exists()) {
+                return{
+                    id: id, 
+                    ...docSnap.data()
+                    // console.log("Document data:", docSnap.data());
+                }
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
             }
-            getItem(); //Llamamos a la función 
-
-        }else{
-            async function getItem() { //F para mostrar un solo item dentro del ItemDetailContainer
-                const detalleProducto = await getProducts([]) //Guardamos en detalleProducto 1 solo Producto
-                setItem(detalleProducto.find(prod => prod.id == id)); //Modificamos el estado de item (osea del producto que quiero mostrar)
-            }
-            getItem(); //Llamamos a la función 
         }
-    
+        getItemFirestore(id)
+            .then(result => setItem(result))
+            .catch(err => console.log(err))
     }, [id])
-    console.log(id);
+    console.log('Id de product en ItemDetailContainer', id);
 
     return(
         <>

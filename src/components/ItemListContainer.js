@@ -1,9 +1,11 @@
-import { counter } from "@fortawesome/fontawesome-svg-core";
 import React, { useState, useEffect } from "react";
-import ItemCount from "../components/ItemCount";
 import ItemList from "./ItemList";
-import { getProducts } from '../products/Products' //Importamos datos del array Products en esta F
+// import { getProducts } from '../products/Products' //Importamos datos del array Products en esta F
 import { useParams } from "react-router-dom";
+import { collection, getDocs, orderBy, query, where} from "firebase/firestore";
+import db from '../utils/firebaseConfig';
+import { async } from "@firebase/util";
+import {  } from "firebase/firestore";
 
 
 
@@ -12,28 +14,29 @@ const ItemListContainer = ({ }) => {
     const { categoryName } = useParams();
  
     useEffect(() => {
-        if(categoryName == undefined){
-            async function obtenerProducts (){ //Definimos F con Async
-                const datosProducts = await getProducts(); //Await para resolver promesa(nos envía el array Products) y lo guardo en datosProducts
-                setRopa(datosProducts);//Seteamos el array y modifica estado de [ropa]
+        let q;
+        const getDataFirestore = async (categoryName) => {
+
+            if(categoryName) {
+                q = query(collection(db, "products"), where("categoryName", "==", categoryName));
+                console.log('Existe la categoria', categoryName);
+            } else {
+                q = query(collection(db, "products"), orderBy ("categoryName"));
             }
-            obtenerProducts(); //Llamamos a la F
-        }else {
-            async function obtenerProducts (){ 
-                const datosProducts = await getProducts(); 
-                setRopa(datosProducts.filter(item => item.categoryName === categoryName));
-            }
-            obtenerProducts();
+            const querySnapshot = await getDocs(q);
+            const dataFirestore = querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+                // console.log(`${doc.id} => ${doc.data()}`);
+            }));
+            return dataFirestore;
         }
+        getDataFirestore(categoryName)
+            .then(result => setRopa(result))
+            .catch(err => console.log(err))
+        
     }, [categoryName]); //Lo ponemos entre [] para que vuelva a renderizar el array al momento de filtrar la categoria
    
-    // console.log(ropa, 'Soy el array de Products');
-    // console.log(categoryName); //Me muestra categoryName seleccionada en URL
-    // const onAdd = () => {
-    //     console.log('Agregaste ' + {counter} + 'productos')
-    // }
-
-
     return (
         <>
             
@@ -43,9 +46,16 @@ const ItemListContainer = ({ }) => {
                 <h2>Productos Disponibles</h2>
                 </div>
             </div>
+
             <ItemList  productos = {ropa} />
-       
         </>
     );
 }
 export default ItemListContainer;
+
+
+   // console.log(ropa, 'Soy el array de Products');
+    // console.log(categoryName); //Me muestra categoryName seleccionada en URL
+    // const onAdd = () => {
+    //     console.log('Agregaste ' + {counter} + 'productos')
+    // }

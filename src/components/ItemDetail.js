@@ -8,6 +8,7 @@ import {CartContext} from '../context/CartContext';
 
 
 
+
 const ItemDetail = ({ producto }) => {
     console.log('Detalle de Producto en ItemDetail', producto);  //Aca se muestra el Detalle del Producto
    
