@@ -8,17 +8,17 @@ import { async } from "@firebase/util";
 import {  } from "firebase/firestore";
 
 
-
 const ItemListContainer = ({ }) => {
     const [ropa, setRopa] = useState([]);
     const { categoryName } = useParams();
  
     useEffect(() => {
-        let q;
-        const getDataFirestore = async (categoryName) => {
+        let q; //Creamos 1 variable nueva para las categorias
 
-            if(categoryName) {
-                q = query(collection(db, "products"), where("categoryName", "==", categoryName));
+        const getDataFirestore = async (categoryName) => { //F para obtener las categorias
+
+            if(categoryName) { 
+                q = query(collection(db, "products"), where("categoryName", "==", categoryName)); //Si existe categoryName lo buscamos en db(products) y comparamos categName == categoryName
                 console.log('Existe la categoria', categoryName);
             } else {
                 q = query(collection(db, "products"), orderBy ("categoryName"));
@@ -39,8 +39,6 @@ const ItemListContainer = ({ }) => {
    
     return (
         <>
-            
-            {/* <ItemCount stock={5} initial={1} onAdd={onAdd}  /> */}
             <div className="container mt-2" >
                 <div className='titulosPaginas mb-3'>
                 <h2>Productos Disponibles</h2>
@@ -54,8 +52,8 @@ const ItemListContainer = ({ }) => {
 export default ItemListContainer;
 
 
-   // console.log(ropa, 'Soy el array de Products');
-    // console.log(categoryName); //Me muestra categoryName seleccionada en URL
-    // const onAdd = () => {
-    //     console.log('Agregaste ' + {counter} + 'productos')
-    // }
+// console.log(ropa, 'Soy el array de Products');
+// console.log(categoryName); //Me muestra categoryName seleccionada en URL
+// const onAdd = () => {
+//     console.log('Agregaste ' + {counter} + 'productos')
+// }

@@ -14,17 +14,13 @@ const CartWidget = () => {
    }) 
 
     return (
-       <>
-            
+       <>   
         <button className="btn btn-outline-success btn-sm" id="btnCarrito" >
             { <FontAwesomeIcon icon={faCartShopping} style={{marginRight:'3px'}}/> }
             {itemsInCart > 0 ? <span>{itemsInCart}</span> : <span style={{visibility: 'hidden'}}></span>  }
-            
-        </button>  
-               
+        </button>         
        </>
     );
     
-
 }
 export default CartWidget;

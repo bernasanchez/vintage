@@ -6,7 +6,7 @@ const Item = ({ id, title, description, price, picture }) =>{
     // console.log(title,  'Productos estan en Item') 
     return (
         <>
-            <div className="col-xl-3" >
+            <div className="col-xl-3 mb-3" >
                 <div key={id} className="card text-center ">
                 <div className="card-body ">
                 <img src={picture} className="card-img-top img-thumbnail" id="imgCard"/>

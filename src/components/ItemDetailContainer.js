@@ -12,12 +12,11 @@ const ItemDetailContainer = () => {
     
     useEffect(() => { 
         
-        
-        const getItemFirestore = async (id) => {
-            const docRef = doc(db, "products", id);
+        const getItemFirestore = async (id) => { //F para mostrar detalle de 1 item
+            const docRef = doc(db, "products", id); //Solicitamos el item de la db (products) por el id 
             const docSnap = await getDoc(docRef);
             
-            if (docSnap.exists()) {
+            if (docSnap.exists()) { //Si existe lo retornamos al elemento entero
                 return{
                     id: id, 
                     ...docSnap.data()
@@ -28,8 +27,8 @@ const ItemDetailContainer = () => {
                 console.log("No such document!");
             }
         }
-        getItemFirestore(id)
-            .then(result => setItem(result))
+        getItemFirestore(id) 
+            .then(result => setItem(result)) //Tomamos el item.id y seteamos el resultado en el estado (setItem)
             .catch(err => console.log(err))
     }, [id])
     console.log('Id de product en ItemDetailContainer', id);

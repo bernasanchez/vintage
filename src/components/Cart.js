@@ -3,6 +3,10 @@ import { CartContext } from '../context/CartContext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
+import { increment, serverTimestamp, updateDoc, doc, collection, setDoc  } from 'firebase/firestore';
+import { async } from '@firebase/util';
+import db from '../utils/firebaseConfig';
+
 
 
 const Cart = () => {
@@ -10,6 +14,49 @@ const Cart = () => {
     const [{ items, removeItem, clearItems, totalPrenda, subTotalProductos, impuestos, costoEnvio, totalCompra }] = useContext(CartContext);
     console.log('Item en cart', items);
    
+    const sendOrder = () => { //F para enviar orden a Firestore
+        const sendItemDb = items.map(item => ({
+            id: item.id,
+            title: item.name,
+            price: item.price,
+            counter: item.counter 
+        }));
+
+        items.forEach(async (item) => {
+            const itemRef = doc(db, "products", item.id);
+            await updateDoc(itemRef, {
+                stock: increment(-item.counter)
+            });
+        });
+
+        let order = { //Creamos la orden con los campos que necesitamos
+            buyer: {
+                name: 'Bernardo Sanchez',
+                email: 'bernasanchez@gmail.com',
+                phone: '3513077123',
+            },
+            date: serverTimestamp(), //Mostrar date con funcion de Firebase
+            items: sendItemDb,
+            total: totalCompra()
+        }
+        console.log(order); //Mostramos orden creada por consola
+
+        const createOrderFirestore = async () => { //Creamos la nueva coleccion que almacena las ordenes enviadas
+            const newOrderRef = doc(collection(db, "orders")); //La coleccion se llama "orders"
+            await setDoc(newOrderRef, order); //Aqui agregamos la orden (order) creada anteriormente
+            return newOrderRef;
+        }
+
+        createOrderFirestore()
+            .then(result => alert('Tu orden esta creada!' + ' ' + 'Tu N° de seguimiento es:' + ' ' + ' ' + result.id ))
+            .catch(err => console.log(err))
+
+    
+        clearItems(); //Enviada la orden, eliminamos todos los items del carrito
+
+    }
+    
+ 
     return(
         <>
         
@@ -92,7 +139,7 @@ const Cart = () => {
                          TOTAL  $ {totalCompra()}
                          </div>
                          <br></br>
-                         <button className="btn btn-success btn-sm mb-2" >
+                         <button className="btn btn-success btn-sm mb-2" onClick={sendOrder}>
                              { <FontAwesomeIcon icon={faClipboardCheck} style={{marginRight:'5px'}}/> }
                              Finalizar Compra
                          </button> 
