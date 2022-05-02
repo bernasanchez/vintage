@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import Swal from 'sweetalert2'
+
 
 
 const ItemCount = ({stock, initial, item, addItem}) => {
     // console.log('Producto en ItemCount', item); 
     
     const [counter, setCounter] = useState(initial);
-    
-    // const buttonSuma = document.getElementById('btnSuma');
-    // buttonSuma.disabled = "true"
+   
     const Suma = () => {
         // console.log(counter);
         if(counter < stock ){
@@ -20,8 +20,6 @@ const ItemCount = ({stock, initial, item, addItem}) => {
         }     
     }
 
-    // const buttonResta = document.getElementById('btnResta');
-    // buttonResta.disabled = "true"
     const Resta = () => {
         if(counter > 0){
             setCounter(counter - 1); 
@@ -29,7 +27,11 @@ const ItemCount = ({stock, initial, item, addItem}) => {
             alert('Debe seleccionar un producto');
         }
         
-    }    
+    } 
+    
+    const alertAgregarCarrito = () => {
+        Swal.fire('Producto Agregado!','Agregaste'+ ' ' + item.title + ' ' + 'al carrito', 'success');
+    } 
     
     return(  
         <>
@@ -41,7 +43,7 @@ const ItemCount = ({stock, initial, item, addItem}) => {
             <br/>
             {
                 counter > 0 ?
-                <button className="btn btn-dark" id="btnAgregar" onClick={() => addItem({item, counter})}> 
+                <button className="btn btn-dark" id="btnAgregar" onClick={() => addItem({item, counter}, alertAgregarCarrito())}>
                     { <FontAwesomeIcon icon={faCartPlus} style={{marginRight:'5px'}} />}
                     Agregar al Carrito 
                 </button>

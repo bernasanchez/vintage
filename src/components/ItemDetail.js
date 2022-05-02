@@ -39,9 +39,9 @@ const ItemDetail = ({ producto }) => {
                     </div>
                     <div className="col-md-8">
                         <div className="card-body"> 
-                            <h5 className="card-title fs-1">{producto.title}</h5>
-                            <p className="card-text fs-6 fst-italic">{producto.description}</p>
-                            <p className="card-text fs-3">$ {producto.price}</p>
+                            <h5 className="card-title fs-1" id="titulosDetalleProducto">{producto.title}</h5>
+                            <p className="card-text fs-6 fst-italic" id="descripcionProducto">{producto.description}</p>
+                            <p className="card-text fs-3" id="titulosProductos">$ {producto.price}</p>
                             { productoAgregado === 1?
                             <>
                             <ItemCount item={producto} stock={producto.stock} initial={productoAgregado} addItem={addItem} />

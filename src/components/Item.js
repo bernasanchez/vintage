@@ -10,10 +10,10 @@ const Item = ({ id, title, description, price, picture }) =>{
                 <div key={id} className="card text-center ">
                 <div className="card-body ">
                 <img src={picture} className="card-img-top img-thumbnail" id="imgCard"/>
-                    <h5 className="card-title">{title}</h5>
+                    <h5 className="card-title" id="titulosProductos">{title}</h5>
                     <p className="card-text">{description}</p>
-                    <p className="card-text"> $ {price}</p>
-                    <button className="btn btn-dark d-grid gap-2 mx-auto">
+                    <p className="card-text" id="titulosProductos"> $ {price}</p>
+                    <button className="btn btn-dark d-grid gap-2 mx-auto" id="btnDetalleProducto">
                         <NavLink 
                             to={`/item/${id}`} 
                             style={{textDecoration: 'none', color: 'white'}} >Ver Detalle del Producto

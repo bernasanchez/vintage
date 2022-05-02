@@ -12,8 +12,39 @@ code {
     monospace;
 }
 
+/* Fuente Titulos Paginas */
+.titulosPaginas{
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+.linkNavbar{
+  font-family: 'Roboto', sans-serif;
+  align-items: center;
+}
+
+/* Fuente Titulos Productos */
+#titulosProductos{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+#titulosDetalleProducto{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+#descripcionProducto{
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
+}
+/* Fuente Boton Detalle de Productos */
+#btnDetalleProducto{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
 
 
+/* Carrito */
 #btnCarrito{
   font-size: 85%;
 }
@@ -24,9 +55,6 @@ code {
   
 }
 
-/* #counterCarrito{
-  visibility: hidden;
-} */
 
 /* Logo Vintage */
 #imgLogo{
@@ -69,9 +97,13 @@ code {
 #btnAgregar{
   margin-top: 0px;
   width: 200px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
 
 #btnFinalizarCompra{
   margin-top: 5px;
   width: 200px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }

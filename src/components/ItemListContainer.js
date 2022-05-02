@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom";
 import { collection, getDocs, orderBy, query, where} from "firebase/firestore";
 import db from '../utils/firebaseConfig';
 import { async } from "@firebase/util";
-import {  } from "firebase/firestore";
+
+
 
 
 const ItemListContainer = ({ }) => {
@@ -41,15 +42,21 @@ const ItemListContainer = ({ }) => {
         <>
             <div className="container mt-2" >
                 <div className='titulosPaginas mb-3'>
-                <h2>Productos Disponibles</h2>
+                <h3>Productos Disponibles</h3>
                 </div>
             </div>
 
             <ItemList  productos = {ropa} />
+           
         </>
     );
 }
 export default ItemListContainer;
+
+
+
+
+
 
 
 // console.log(ropa, 'Soy el array de Products');

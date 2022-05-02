@@ -2,10 +2,12 @@ import React, { useContext } from 'react'
 import { CartContext } from '../context/CartContext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { increment, serverTimestamp, updateDoc, doc, collection, setDoc  } from 'firebase/firestore';
 import { async } from '@firebase/util';
 import db from '../utils/firebaseConfig';
+import Swal from 'sweetalert2'
 
 
 
@@ -50,19 +52,20 @@ const Cart = () => {
         createOrderFirestore()
             .then(result => alert('Tu orden esta creada!' + ' ' + 'Tu N° de seguimiento es:' + ' ' + ' ' + result.id ))
             .catch(err => console.log(err))
-
-    
         clearItems(); //Enviada la orden, eliminamos todos los items del carrito
 
     }
     
- 
+    // const alertFinalizarCompra = () => {
+    //     Swal.fire('Gracias por tu Compra!','Tu N° de seguimiento es:' + ' ' + ' ' + result.id ,'success');
+    // } 
+
     return(
         <>
         
         <div className="container mt-2" >
             <div className='titulosPaginas mb-3'>
-                <h2>Mi Carrito</h2>
+                <h3>Mi Carrito</h3>
             </div>
             {
                 items.length > 0 ?
@@ -70,7 +73,7 @@ const Cart = () => {
                     <Link to='/' style={{color: 'black'}}> Seguir Comprando </Link>
                     <span style={{marginLeft: '800px'}}>
                     <button className="btn btn-dark btn-sm "  onClick={() => clearItems()}>
-                    { <FontAwesomeIcon icon={faClipboardCheck} style={{marginRight:'5px'}}/> }
+                    { <FontAwesomeIcon icon={faTrashCan} style={{marginRight:'5px'}}/> }
                     Vaciar Carrito
                     </button> 
                     </span>
@@ -83,73 +86,80 @@ const Cart = () => {
             
         </div>
        
-        <div className="row">
-        {
-            items.length > 0 &&
-            items.map((item) => (
-                <div className="container mt-5" >
-                    <div className="row" >
-                        <div className="col-sm-8">
+       <div className="container mt-5" >
+            <div className="row align-items-start">
+                <div className="col-sm-8">
+                    {
+                        items.length > 0 &&
+                        items.map((item) => (
+                            
                             <div key={item.id} className="card mb-3" >
-                                <div className="row g-0">
-                                    <div className="col-md-4">
-                                        <img src={item.picture} className="img-fluid rounded-start" alt="..." />
+                                    <div className="row ">
+                                        <div className="col-md-4">
+                                            <img src={item.picture} className="img-fluid rounded-start" alt="..." />
+                                        </div>
+                                        <div className="col-md-8">
+                                            <div className="card-body titulosPaginas" >
+                                                <h5 className="card-title h1" id='titulosDetalleProducto'>{item.name}</h5>
+                                                <p className="card-text h4 "> Precio $ {item.price}</p>
+                                                <p className="card-text h4">Cantidad: {item.counter}</p>
+                                                <p className="card-text h4">Total Producto/s $ {totalPrenda(item.id)} </p>
+                                               
+                                                <button className="btn btn-danger" id='btnDetalleProducto' onClick={() => removeItem(item.id)}>
+                                                    { <FontAwesomeIcon icon={faTrashCan} style={{marginRight:'5px'}}/> }
+                                                    Eliminar Producto 
+                                                </button>  
+                                            </div>
+                                        </div>
                                     </div>
-                                <div className="col-md-8">
-                                    <div className="card-body">
-                                        <h5 className="card-title h1">{item.name}</h5>
-                                        <br></br>
-                                        <p className="card-text h4 "> Precio $ {item.price}</p>
-                                        <p className="card-text h4">Cantidad: {item.counter}</p>
-                                        <p className="card-text h4">Total Producto/s $ {totalPrenda(item.id)} </p>
-                                        <br></br>
-                                        {/* <p className="card-text h4">Total: {items.totalPrenda(item.id)} </p> */}
-                                        <br></br>
-                                        <button className="btn btn-danger" onClick={() => removeItem(item.id)}>
-                                            { <FontAwesomeIcon icon={faClipboardCheck} style={{marginRight:'5px'}}/> }
-                                            Eliminar Producto 
-                                        </button>  
-                                    </div>
-                                </div>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>   
-            ))   
-        }
-
-        {
-            items.length > 0 &&
-             <div className="col-sm-4" style={{position: 'relative'}}>
-                <div className="row" >
-                         <div className="col-12 mb-2 h5" >
-                         Subtotal $ {subTotalProductos()}
-                         </div>
-                         <br></br>
-                         <div className="col-12 mb-2 h5" >
-                         Impuestos (IVA 21%)  $ {impuestos()}
-                         </div>
-                         <br></br>
-                         <div className="col-12 mb-2 h5" >
-                         Costo de Envío $ {costoEnvio()}
-                         </div>
-                         <br></br>
-                         <div className="col-12 mb-2 h4" >
-                         TOTAL  $ {totalCompra()}
-                         </div>
-                         <br></br>
-                         <button className="btn btn-success btn-sm mb-2" onClick={sendOrder}>
-                             { <FontAwesomeIcon icon={faClipboardCheck} style={{marginRight:'5px'}}/> }
-                             Finalizar Compra
-                         </button> 
+                            
+                            
+                               
+                        ))   
+                    }
+                   
                 </div>
-            </div>
-        }
                
+                  
+                {
+                    items.length > 0 &&
+                    <>
+                     <div class="col-sm-4 border border-2 border-dark rounded">
+                        <div className="row mt-2 mb-3"  >
+                        <div className="text-center fw-bold h3  titulosPaginas" >
+                            DETALLE DE LA COMPRA
+                        </div>
+                                <div className="col-12 mb-2 h5 " >
+                                Subtotal $ {subTotalProductos()}
+                                </div>
+                                <br></br>
+                                <div className="col-12 mb-2 h5" >
+                                Impuestos (IVA 21%)  $ {impuestos()}
+                                </div>
+                                <br></br>
+                                <div className="col-12 mb-2 h5" >
+                                Costo de Envío $ {costoEnvio()}
+                                </div>
+                                <br></br>
+                                <div className="col-12 mb-2 h4" >
+                                TOTAL  $ {totalCompra()}
+                                </div>
+                                <button className="btn btn-success btn-sm mb-2" id='btnDetalleProducto' onClick={sendOrder} >
+                                    { <FontAwesomeIcon icon={faClipboardCheck} style={{marginRight:'5px'}}/> }
+                                    Finalizar Compra
+                                </button> 
+                        </div>
 
-           
+                    </div>
+                    </>
+                }
+                    
+                
+                                
+            </div>
 
+            
         </div>
         </>
 
