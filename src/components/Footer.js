@@ -18,19 +18,19 @@ const Footer = () =>{
                     /> 
                      V I N T A G E
                 </Link>
-                <ul className="col-3 list-unstyled">
+                <ul className="col-3 list-unstyled textosFooter">
                     <li className="font-weight-bold text-uppercase">Acerca de</li>
                     <li> <a href="#" className="text-reset text-decoration-none">Quienes Somos</a> </li>
                     <li> <a href="#" className="text-reset text-decoration-none">Términos y Condiciones</a> </li>
                     <li> <a href="#" className="text-reset text-decoration-none">Defensa del Consumidor</a> </li>
                 </ul>
-                <ul className="col-3 list-unstyled">
+                <ul className="col-3 list-unstyled textosFooter">
                     <li className="font-weight-bold text-uppercase">Catálogo</li>
                     <li> <Link to='/category/hombre' className="text-reset text-decoration-none">Hombre</Link> </li>
                     <li> <Link to='/category/mujer' className="text-reset text-decoration-none">Mujer</Link> </li>
                     <li> <Link to='/category/deco' className="text-reset text-decoration-none">Deco</Link> </li>
                 </ul>
-                <ul className="col-3 list-unstyled">
+                <ul className="col-3 list-unstyled textosFooter">
                     <li className="font-weight-bold text-uppercase">Redes Sociales</li>
                     <li className=""> <a href="https://github.com/bernasanchez" className="text-reset" style={{textDecoration:'none'}}>
                         { <FontAwesomeIcon icon={faGithub}  style={{marginRight:'10px'}}/> }

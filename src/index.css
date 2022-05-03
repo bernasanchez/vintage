@@ -42,7 +42,12 @@ code {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
-
+/* Fuente Footer */
+.textosFooter{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-weight: lighter;
+}
 
 /* Carrito */
 #btnCarrito{

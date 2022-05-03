@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { increment, serverTimestamp, updateDoc, doc, collection, setDoc  } from 'firebase/firestore';
 import { async } from '@firebase/util';
 import db from '../utils/firebaseConfig';
-import Swal from 'sweetalert2'
+
 
 
 
@@ -56,10 +56,7 @@ const Cart = () => {
 
     }
     
-    // const alertFinalizarCompra = () => {
-    //     Swal.fire('Gracias por tu Compra!','Tu N° de seguimiento es:' + ' ' + ' ' + result.id ,'success');
-    // } 
-
+  
     return(
         <>
         
@@ -72,7 +69,7 @@ const Cart = () => {
                 <div className='subtitleCarrito mb-2'>
                     <Link to='/' style={{color: 'black'}}> Seguir Comprando </Link>
                     <span style={{marginLeft: '800px'}}>
-                    <button className="btn btn-dark btn-sm "  onClick={() => clearItems()}>
+                    <button className="btn btn-dark btn-sm" id='btnDetalleProducto' onClick={() => clearItems()}>
                     { <FontAwesomeIcon icon={faTrashCan} style={{marginRight:'5px'}}/> }
                     Vaciar Carrito
                     </button> 
@@ -125,27 +122,27 @@ const Cart = () => {
                 {
                     items.length > 0 &&
                     <>
-                     <div class="col-sm-4 border border-2 border-dark rounded">
+                     <div className="col-sm-4 border border-2 border-dark rounded">
                         <div className="row mt-2 mb-3"  >
-                        <div className="text-center fw-bold h3  titulosPaginas" >
+                        <div className="text-center fw-bold h3 titulosPaginas" >
                             DETALLE DE LA COMPRA
                         </div>
-                                <div className="col-12 mb-2 h5 " >
+                                <div className="col-12 mb-2 h5 titulosPaginas " >
                                 Subtotal $ {subTotalProductos()}
                                 </div>
                                 <br></br>
-                                <div className="col-12 mb-2 h5" >
+                                <div className="col-12 mb-2 h5 titulosPaginas" >
                                 Impuestos (IVA 21%)  $ {impuestos()}
                                 </div>
                                 <br></br>
-                                <div className="col-12 mb-2 h5" >
+                                <div className="col-12 mb-2 h5 titulosPaginas" >
                                 Costo de Envío $ {costoEnvio()}
                                 </div>
                                 <br></br>
-                                <div className="col-12 mb-2 h4" >
+                                <div className="col-12 mb-2 fw-bold h4 titulosPaginas" >
                                 TOTAL  $ {totalCompra()}
                                 </div>
-                                <button className="btn btn-success btn-sm mb-2" id='btnDetalleProducto' onClick={sendOrder} >
+                                <button className="btn btn-success btn-sm mb-2 py-1" id='btnDetalleProducto' onClick={sendOrder} >
                                     { <FontAwesomeIcon icon={faClipboardCheck} style={{marginRight:'5px'}}/> }
                                     Finalizar Compra
                                 </button> 

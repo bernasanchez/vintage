@@ -7,6 +7,8 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
 import CartContextProvider from './context/CartContext';
 import Footer from './components/Footer';
+import Slider from './components/Slider';
+
 
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
     <CartContextProvider>
       <BrowserRouter>
         <NavBar />
+       <Slider />
         <div className="container mt-2" style={{marginBottom:'300px'}}>
         <Routes>
           <Route path='/' element={<ItemListContainer />} />
