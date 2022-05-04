@@ -6,8 +6,7 @@ El proyecto se encuenta en desarrollo y cuenta con:
 * Menu de Navegación: cuatro categorías navegables gracias a la implementacion de React Router Dom.
 * Vista de los Productos: vista general en "Home" de todos los productos que cuenta la base de datos. 
 * Vista del Detalle del Producto: vista personalizada del producto seleccionado por el cliente, con su precio, stock y descripción. 
-* Vista del carrito de compras con los productos: (en desarrollo)
-* Formulario de compra: vista del formulario donde el cliente ingresa sus datos personales para luego confirmar la compra. (en desarrollo)
+* Vista del carrito de compras: si hay productos en el carrito, muestra el detalle del producto elegido, con su precio, la cantidad del mismo y el total. También hacia un lado, encotramos el resumen de la compra y un botón para finalizar la misma.Si no hay productos aparecerá, de manera condicional, un alert provisto por bootstrap donde nos avisará que no existen productos seleccionados. 
 
 
 
@@ -34,9 +33,10 @@ _El proyecto estará disponible en http://localhost:3000._
 _Las herramientas utilizadas para el desarrollo del proyecto son las siguientes:_
 
 * [React Js](https://es.reactjs.org/) - La libreria de Js utilizada en el desarrollo
-* [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/download/) - El framework web usado
+* [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/download/) - Framework front-end utilizado para desarrollar aplicaciones web y sitios mobile first
 * [NodeJs](https://nodejs.org/es/) - Manejador de dependencias
-* [Fontawesome](https://fontawesome.com/docs/web/use-with/react/add-icons) - Usado para generar Iconos 
+* [Fontawesome](https://fontawesome.com/docs/web/use-with/react/add-icons) - Framework de iconos vectoriales y estilos css
+* [Sweet Alert 2](https://sweetalert2.github.io/) - Libreria para crear ventanas emergentes personalizadas. 
 
 ## Wiki 📖
 
@@ -46,6 +46,6 @@ Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](ht
 
 _El proyecto fue realizado por:_
 
-* **Bernardo Sanchez** - *V I N T E D* - [bernasanchez]https://github.com/bernasanchez)
+* **Bernardo Sanchez** - *V I N T E D* - [bernasanchez](https://github.com/bernasanchez)
 
 ---

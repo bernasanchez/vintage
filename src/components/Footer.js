@@ -2,7 +2,7 @@ import React from "react";
 import vintagelogo from '../assets/vintagelogo.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGithub, faInstagram, faLinkedin, faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Footer = () =>{
 

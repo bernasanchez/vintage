@@ -7,10 +7,8 @@ import {useContext} from 'react';
 import {CartContext} from '../context/CartContext';
 
 
-
-
 const ItemDetail = ({ producto }) => {
-    console.log('Detalle de Producto en ItemDetail', producto);  //Aca se muestra el Detalle del Producto
+    // console.log('Detalle de Producto en ItemDetail', producto);  //Aca se muestra el Detalle del Producto
    
     const [productoAgregado, setproductoAgregado] = useState(1)//Nuevo estado para counter: le asignamos un estado inicial en 1(initial={productoAgregado})
     
@@ -24,7 +22,7 @@ const ItemDetail = ({ producto }) => {
     return ( 
         <>
         <div className="container mt-2" >
-            <div className='titulosPaginas mb-3'>
+            <div className='titulosPaginas mt-4 mb-3'>
                 <h2>Detalle del Producto</h2>
             </div>
             <div className='subtitleCarrito mb-1'>
@@ -55,8 +53,6 @@ const ItemDetail = ({ producto }) => {
                 </div>
             </div>
         </div>
-
-
         </>
 
     );

@@ -5,7 +5,6 @@ import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import Swal from 'sweetalert2'
 
 
-
 const ItemCount = ({stock, initial, item, addItem}) => {
     // console.log('Producto en ItemCount', item); 
     

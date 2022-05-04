@@ -23,7 +23,7 @@ const CartContextProvider = ({ children }) => {
             }))
             :
             setItems([...items, {id: item.id, name: item.title, price: item.price, picture: item.picture, counter: counter}]);
-            console.log('Producto en addItem', item);
+            // console.log('Producto en addItem', item);
             // alert('llegando');   
             // console.log('producto desde CartContextProvider', item);
     }

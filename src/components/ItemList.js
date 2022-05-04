@@ -8,7 +8,6 @@ const ItemList = ({ productos }) => {
     // console.log(productos, 'Productos llegaron a ItemList')
     return (
         <>
-        
         <div className="row">
                 { productos.length > 0 ?
                          productos.map( item => 

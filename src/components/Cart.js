@@ -9,12 +9,10 @@ import { async } from '@firebase/util';
 import db from '../utils/firebaseConfig';
 
 
-
-
 const Cart = () => {
    
     const [{ items, removeItem, clearItems, totalPrenda, subTotalProductos, impuestos, costoEnvio, totalCompra }] = useContext(CartContext);
-    console.log('Item en cart', items);
+    // console.log('Item en cart', items);
    
     const sendOrder = () => { //F para enviar orden a Firestore
         const sendItemDb = items.map(item => ({
@@ -41,7 +39,7 @@ const Cart = () => {
             items: sendItemDb,
             total: totalCompra()
         }
-        console.log(order); //Mostramos orden creada por consola
+        // console.log(order); //Mostramos orden creada por consola
 
         const createOrderFirestore = async () => { //Creamos la nueva coleccion que almacena las ordenes enviadas
             const newOrderRef = doc(collection(db, "orders")); //La coleccion se llama "orders"
@@ -56,12 +54,11 @@ const Cart = () => {
 
     }
     
-  
     return(
         <>
         
         <div className="container mt-2" >
-            <div className='titulosPaginas mb-3'>
+            <div className='titulosPaginas mt-4 mb-3'>
                 <h3>Mi Carrito</h3>
             </div>
             {
@@ -109,16 +106,12 @@ const Cart = () => {
                                             </div>
                                         </div>
                                     </div>
-                            </div>
-                            
-                            
-                               
+                            </div>     
                         ))   
                     }
                    
                 </div>
-               
-                  
+            
                 {
                     items.length > 0 &&
                     <>
@@ -150,16 +143,10 @@ const Cart = () => {
 
                     </div>
                     </>
-                }
-                    
-                
-                                
+                }               
             </div>
-
-            
         </div>
         </>
-
     );
 }
 export default Cart; 

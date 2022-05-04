@@ -5,7 +5,6 @@ import { doc, getDoc } from "firebase/firestore";
 import db from '../utils/firebaseConfig';
 
 
-
 const ItemDetailContainer = () => {
     const [item, setItem] = useState([]) //Estado para obtener y/o modificar 1 Item
     const { id } = useParams();
@@ -31,7 +30,7 @@ const ItemDetailContainer = () => {
             .then(result => setItem(result)) //Tomamos el item.id y seteamos el resultado en el estado (setItem)
             .catch(err => console.log(err))
     }, [id])
-    console.log('Id de product en ItemDetailContainer', id);
+    // console.log('Id de product en ItemDetailContainer', id);
 
     return(
         <>

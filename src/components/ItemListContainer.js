@@ -7,8 +7,6 @@ import db from '../utils/firebaseConfig';
 import { async } from "@firebase/util";
 
 
-
-
 const ItemListContainer = ({ }) => {
     const [ropa, setRopa] = useState([]);
     const { categoryName } = useParams();
@@ -41,7 +39,7 @@ const ItemListContainer = ({ }) => {
     return (
         <>
             <div className="container mt-2" >
-                <div className='titulosPaginas mb-3'>
+                <div className='titulosPaginas mt-4 mb-3'>
                 <h3>Productos Disponibles</h3>
                 </div>
             </div>
