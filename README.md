@@ -1,6 +1,6 @@
-# V I N T E D
+# V I N T A G E 
 
-_VINTED es un E-commerce responsive que permite la compra de ropa y accesorios para el hogar. Esta basado en el framework Bootstrap 5.0 y fue desarrollado con React Js, JavaScript, CSS3 y HTML5._
+_VINTAGE es un E-commerce responsive que permite la compra de ropa y accesorios para el hogar. Esta basado en el framework Bootstrap 5.0 y fue desarrollado con React Js, JavaScript, CSS3 y HTML5._
 
 El proyecto se encuenta en desarrollo y cuenta con: 
 * Menu de Navegación: cuatro categorías navegables gracias a la implementacion de React Router Dom.
@@ -8,7 +8,9 @@ El proyecto se encuenta en desarrollo y cuenta con:
 * Vista del Detalle del Producto: vista personalizada del producto seleccionado por el cliente, con su precio, stock y descripción. 
 * Vista del carrito de compras: si hay productos en el carrito, muestra el detalle del producto elegido, con su precio, la cantidad del mismo y el total. También hacia un lado, encotramos el resumen de la compra y un botón para finalizar la misma.Si no hay productos aparecerá, de manera condicional, un alert provisto por bootstrap donde nos avisará que no existen productos seleccionados. 
 
+### V I N T A G E en Acción 💻
 
+![](./screenshot/V%20I%20N%20T%20A%20G%20E.gif)
 
 ### Instalación 🔧
 
@@ -46,6 +48,6 @@ Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](ht
 
 _El proyecto fue realizado por:_
 
-* **Bernardo Sanchez** - *V I N T E D* - [bernasanchez](https://github.com/bernasanchez)
+* **Bernardo Sanchez** - *V I N T A G E* - [bernasanchez](https://github.com/bernasanchez)
 
 ---
